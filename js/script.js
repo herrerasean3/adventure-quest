@@ -11,9 +11,34 @@ let current_scene;
 let process = 0;
 
 let jc = ['SCENE I. Rome. A Street.', 'Enter FLAVIUS, MARULLUS, and certain Commoners',
-'FLAVIUS','Hence! home, you idle creatures get you home; <br>Is this a holiday? what! know you not, <br>Being mechanical, you ought not walk <br>Upon a labouring day without the sign <br>Of your profession? Speak, what trade art thou?','First Commoner','Why, sir, a carpenter.','MARULLUS','Where is thy leather apron and thy rule? <br>What dost thou with thy best apparel on?<br> You, sir, what trade are you?','First Commoner', 'Why, sir, a carpenter.','MARULLUS','Where is thy leather apron and thy rule? <br>What dost thou with thy best apparel on? <br>You, sir, what trade are you?','Second Commoner','Truly, sir, in respect of a fine workman, I am but, <br>as you would say, a cobbler.']
-let ham = [];
-chars = ['FLAVIUS','MARULLUS','First Commoner','Second Commoner'];
+'FLAVIUS',
+'Hence! home, you idle creatures get you home; <br>Is this a holiday? what! know you not, <br>Being mechanical, you ought not walk <br>Upon a labouring day without the sign <br>Of your profession? Speak, what trade art thou?',
+'First Commoner',
+'Why, sir, a carpenter.',
+'MARULLUS',
+'Where is thy leather apron and thy rule? <br>What dost thou with thy best apparel on?<br> You, sir, what trade are you?',
+'Second Commoner',
+'Truly, sir, in respect of a fine workman, I am but, <br>as you would say, a cobbler.',
+'MARULLUS',
+'But what trade art thou? answer me directly.',
+'Second Commoner',
+'A trade, sir, that, I hope, I may use with a safe <br>conscience; which is, indeed, sir, a mender of bad soles.',
+'MARULLUS',
+'What trade, thou knave? thou naughty knave, what trade?',
+'Second Commoner',
+'Nay, I beseech you, sir, be not out with me: yet, <br>if you be out, sir, I can mend you.',
+'MARULLUS',
+'What meanest thou by that? mend me, thou saucy fellow!',
+'Second Commoner',
+'Why, sir, cobble you.',
+'FLAVIUS',
+'Thou art a cobbler, art thou?',
+'Second Commoner',
+'Truly, sir, all that I live by is with the awl: I <br>meddle with no tradesman\'s matters, nor women\'s matters, but with awl. I am, indeed, sir, a surgeon <br>to old shoes; when they are in great danger, I <br>recover them. As proper men as ever trod upon <br>neat\'s leather have gone upon my handiwork.']
+let ham = ['SCENE I. Elsinore. A platform before the castle.',
+'FRANCISCO at his post. Enter to him BERNARDO',
+];
+chars = ['FLAVIUS','MARULLUS','First Commoner','Second Commoner','FRANCISCO','BERNARDO'];
 
 //Clears any text or elements inside the target, allowing us to maintain a clean worspace
 function eleWipe(target){
@@ -55,7 +80,7 @@ function advStory(chapter){
     process = 0;
   }
   else {
-
+    docInit();
   }
 }
 
@@ -126,6 +151,12 @@ btn.forEach((item,index,array) => {
   })
 })
 
+function docInit(){
+  elePrint(storybox, '<h2>Select a new Story:</h2>');
+  storyBegin = false;
+  btn1.textContent = 'Julius Caesar';
+  btn2.textContent = 'Hamlet';
+  postNum = 1;
+}
 
-btn1.textContent = 'Julius Caesar';
-btn2.textContent = 'Hamlet'
+docInit();
