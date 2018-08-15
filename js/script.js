@@ -179,6 +179,8 @@ let ham = ['SCENE I. Elsinore. A platform before the castle.',
 
 chars = ['FLAVIUS','MARULLUS','First Commoner','Second Commoner','FRANCISCO','BERNARDO'];
 
+backgrounds = ['71.jpg','77-rge.jpg'];
+
 //Clears any text or elements inside the target, allowing us to maintain a clean worspace
 function eleWipe(target){
   target.innerHTML='';
@@ -260,25 +262,26 @@ function backStory(chapter){
   }
 }
 
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 btn.forEach((item,index,array) => {
   item.addEventListener('click',function(){
     if (item.textContent == 'Julius Caesar') {
       current_scene = jc;
-      document.body.style.backgroundImage = "url('/css/71.jpg')";
-      document.body.style.color = "black";
     }
     else if (item.textContent == 'Hamlet') {
       current_scene = ham;
-      document.body.style.backgroundImage = "url('/css/77-rge.jpg')";
-      document.body.style.color = "white";
     }
     else if (item.textContent == 'Back') {
       backStory(current_scene);
     }
     else if (item.textContent == 'Continue') {
+      document.body.style.backgroundImage = `url('/css/${backgrounds[getRandomIntInclusive(0,backgrounds.length-1)]}')`;
       advStory(current_scene);
-      document.body.style.backgroundImage = "url('/css/77-rge.jpg')";
-      document.body.style.color = "white";
     }
     if (storyBegin === false) {
       btn.forEach((item,index,array) => {
