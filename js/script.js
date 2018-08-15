@@ -126,15 +126,21 @@ btn.forEach((item,index,array) => {
   item.addEventListener('click',function(){
     if (item.textContent == 'Julius Caesar') {
       current_scene = jc;
+      document.body.style.backgroundImage = "url('/css/71.jpg')";
+      document.body.style.color = "black";
     }
     else if (item.textContent == 'Hamlet') {
       current_scene = ham;
+      document.body.style.backgroundImage = "url('/css/77-rge.jpg')";
+      document.body.style.color = "white";
     }
     else if (item.textContent == 'Back') {
       backStory(current_scene);
     }
     else if (item.textContent == 'Continue') {
       advStory(current_scene);
+      document.body.style.backgroundImage = "url('/css/77-rge.jpg')";
+      document.body.style.color = "white";
     }
     if (storyBegin === false) {
       btn.forEach((item,index,array) => {

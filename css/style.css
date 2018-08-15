@@ -1,0 +1,25 @@
+body {
+
+  background-image: url("/css/77-rge.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
+
+}
+
+#btn1{
+
+  /* background: url("/css/76-rge.jpg"); */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#btn2 {
+  /* background: url('/css/78-rge.jpg'); */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
