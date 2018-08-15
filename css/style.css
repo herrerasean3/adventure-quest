@@ -6,9 +6,21 @@ body {
   background-attachment: fixed;
   background-position: center;
   color: white;
-
+  text-align: center;
 }
 
+#storybox{
+  width: 50%;
+  height: 50px;
+  border: 1px solid;
+  margin: auto;
+  flex: auto;
+  background-color: black;
+}
+
+.btn {
+  height: auto;
+}
 #btn1{
 
   /* background: url("/css/76-rge.jpg"); */
