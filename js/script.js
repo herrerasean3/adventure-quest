@@ -221,6 +221,7 @@ function advStory(chapter){
     process = 0;
   }
   else {
+    window.location.replace(window.location.protocol + "//" + window.location.host);
     docInit();
   }
 }
@@ -252,7 +253,6 @@ function backStory(chapter){
       }
       process++;
       if (postNum === chapter.length) {
-        window.location.reload(false);
       }
     }
     process = 0;
