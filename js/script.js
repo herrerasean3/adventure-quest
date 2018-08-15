@@ -1,8 +1,6 @@
 let storybox = document.querySelector('#storybox');
 let btn1 = document.querySelector('#btn1');
 let btn2 = document.querySelector('#btn2');
-let btn3 = document.querySelector('#btn3');
-let btn4 = document.querySelector('#btn4');
 let btn = document.querySelectorAll('.btn');
 let postNum = 1;
 let sceneEnd = false;
@@ -90,6 +88,7 @@ let ham = ['SCENE I. Elsinore. A platform before the castle.',
 'FRANCISCO',
 'Bernardo has my place. Give you good night.',
 'Exit MARCELLUS',
+'FRANCISCO',
 'Holla! Bernardo!',
 'BERNARDO',
 'Say, What, is Horatio there?',
@@ -156,6 +155,7 @@ let ham = ['SCENE I. Elsinore. A platform before the castle.',
 'HORATIO',
 'A mote it is to trouble the mind\'s eye. In the most high and palmy state of Rome, A little ere the mightiest Julius fell, The graves stood tenantless and the sheeted dead Did squeak and gibber in the Roman streets: As stars with trains of fire and dews of blood, Disasters in the sun; and the moist star Upon whose influence Neptune\'s empire stands Was sick almost to doomsday with eclipse: And even the like precurse of fierce events, As harbingers preceding still the fates And prologue to the omen coming on, Have heaven and earth together demonstrated Unto our climatures and countrymen.-- But soft, behold! lo, where it comes again!',
 'Re-enter Ghost',
+'HORATIO',
 'I\'ll cross it, though it blast me. Stay, illusion! If thou hast any sound, or use of voice, Speak to me: If there be any good thing to be done, That may to thee do ease and grace to me, Speak to me: Cock crows If thou art privy to thy country\'s fate, Which, happily, foreknowing may avoid, O, speak! Or if thou hast uphoarded in thy life Extorted treasure in the womb of earth, For which, they say, you spirits oft walk in death, Speak of it: stay, and speak! Stop it, Marcellus.',
 'MARCELLUS',
 'Shall I strike at it with my partisan?',
@@ -168,16 +168,23 @@ let ham = ['SCENE I. Elsinore. A platform before the castle.',
 'MARCELLUS',
 'Tis gone!',
 'Exit Ghost',
+'MARCELLUS',
 'We do it wrong, being so majestical, To offer it the show of violence; For it is, as the air, invulnerable, And our vain blows malicious mockery.',
 'BERNARDO',
 'It was about to speak, when the cock crew.',
 'HORATIO',
-'And then it started like a guilty thing Upon a fearful summons. I have heard, The cock, that is the trumpet to the morn, Doth with his lofty and shrill-sounding throat Awake the god of day; and, at his warning, Whether in sea or fire, in earth or air, The extravagant and erring spirit hies To his confine: and of the truth herein This present object made probation. MARCELLUS It faded on the crowing of the cock. Some say that ever \'gainst that season comes Wherein our Saviour\'s birth is celebrated, The bird of dawning singeth all night long: And then, they say, no spirit dares stir abroad; The nights are wholesome; then no planets strike, No fairy takes, nor witch hath power to charm, So hallow\'d and so gracious is the time. HORATIO So have I heard and do in part believe it. But, look, the morn, in russet mantle clad, Walks o\'er the dew of yon high eastward hill: Break we our watch up; and by my advice, Let us impart what we have seen to-night Unto young Hamlet; for, upon my life, This spirit, dumb to us, will speak to him. Do you consent we shall acquaint him with it, As needful in our loves, fitting our duty?',
+'And then it started like a guilty thing Upon a fearful summons. I have heard, The cock, that is the trumpet to the morn, Doth with his lofty and shrill-sounding throat Awake the god of day; and, at his warning, Whether in sea or fire, in earth or air, The extravagant and erring spirit hies To his confine: and of the truth herein This present object made probation.',
+'MARCELLUS',
+'It faded on the crowing of the cock. Some say that ever \'gainst that season comes Wherein our Saviour\'s birth is celebrated, The bird of dawning singeth all night long: And then, they say, no spirit dares stir abroad; The nights are wholesome; then no planets strike, No fairy takes, nor witch hath power to charm, So hallow\'d and so gracious is the time.',
+'HORATIO',
+'So have I heard and do in part believe it. But, look, the morn, in russet mantle clad, Walks o\'er the dew of yon high eastward hill: Break we our watch up; and by my advice, Let us impart what we have seen to-night Unto young Hamlet; for, upon my life, This spirit, dumb to us, will speak to him. Do you consent we shall acquaint him with it, As needful in our loves, fitting our duty?',
 'MARCELLUS',
 'Let\'s do\'t, I pray; and I this morning know Where we shall find him most conveniently.',
 'Exeunt'];
 
-chars = ['FLAVIUS','MARULLUS','First Commoner','Second Commoner','FRANCISCO','BERNARDO'];
+chars = ['FLAVIUS','MARULLUS','First Commoner','Second Commoner','FRANCISCO','BERNARDO','HORATIO','MARCELLUS'];
+
+backgrounds = ['71.jpg','77-rge.jpg'];
 
 //Clears any text or elements inside the target, allowing us to maintain a clean worspace
 function eleWipe(target){
@@ -194,7 +201,7 @@ function advStory(chapter){
   eleWipe(storybox);
   if (sceneEnd===false) {
     while (process < 2) {
-      if (chapter[postNum-1].toLowerCase().includes("exeunt") || (chapter[postNum-1].toLowerCase().includes("Exit ")) || (chapter[postNum-1].toLowerCase().includes("Enter "))) {
+      if (chapter[postNum-1].toLowerCase().includes("exeunt") || (chapter[postNum-1].toLowerCase().includes("exit ")) || (chapter[postNum-1].toLowerCase().includes("enter "))) {
         elePrint(storybox, `<i>${chapter[postNum-1]}</i>`)
         postNum++;
         break
@@ -219,66 +226,67 @@ function advStory(chapter){
     process = 0;
   }
   else {
+    window.location.replace(window.location.protocol + "//" + window.location.host);
     docInit();
   }
 }
 
 function backStory(chapter){
-  eleWipe(storybox);
-  if (sceneEnd===false) {
-    while (process < 2) {
-      if (process === 0) {
-        postNum--;
-      }
-      if (chapter[postNum-1].toLowerCase().includes("exeunt")) {
-        elePrint(storybox, `<i>${chapter[postNum-1]}</i>`)
-        postNum--;
-        break
-      }
-      else if (chapter[postNum-1].includes("SCENE")) {
-        elePrint(storybox, `<h3>${chapter[postNum-1]}</h3>`);
-        postNum--;
-      }
-      else if (chars.indexOf(chapter[postNum-1]) !== -1) {
-        elePrint(storybox, `<h3>${chapter[postNum-1]}</h3>`);
-        postNum--;
-      }
-      else {
-        elePrint(storybox, `<p>${chapter[postNum-1]}</p>`);
-        console.log(chapter[postNum-1])
-        postNum--;
-      }
-      process++;
-      if (postNum === chapter.length) {
-        window.location.reload(false);
-      }
-    }
-    process = 0;
-  }
-  else {
+  // eleWipe(storybox);
+  // if (sceneEnd===false) {
+  //   while (process < 2) {
+  //     if (process === 0) {
+  //       postNum--;
+  //     }
+  //     if (chapter[postNum-1].toLowerCase().includes("exeunt")) {
+  //       elePrint(storybox, `<i>${chapter[postNum-1]}</i>`)
+  //       postNum--;
+  //       break
+  //     }
+  //     else if (chapter[postNum-1].includes("SCENE")) {
+  //       elePrint(storybox, `<h3>${chapter[postNum-1]}</h3>`);
+  //       postNum--;
+  //     }
+  //     else if (chars.indexOf(chapter[postNum-1]) !== -1) {
+  //       elePrint(storybox, `<h3>${chapter[postNum-1]}</h3>`);
+  //       postNum--;
+  //     }
+  //     else {
+  //       elePrint(storybox, `<p>${chapter[postNum-1]}</p>`);
+  //       console.log(chapter[postNum-1])
+  //       postNum--;
+  //     }
+  //     process++;
+  //     if (postNum === chapter.length) {
+  //     }
+  //   }
+  //   process = 0;
+  // }
+  // else {
+  //
+  // }
+}
 
-  }
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 btn.forEach((item,index,array) => {
   item.addEventListener('click',function(){
     if (item.textContent == 'Julius Caesar') {
       current_scene = jc;
-      document.body.style.backgroundImage = "url('/css/71.jpg')";
-      document.body.style.color = "black";
     }
     else if (item.textContent == 'Hamlet') {
       current_scene = ham;
-      document.body.style.backgroundImage = "url('/css/77-rge.jpg')";
-      document.body.style.color = "white";
     }
     else if (item.textContent == 'Back') {
       backStory(current_scene);
     }
     else if (item.textContent == 'Continue') {
+      document.body.style.backgroundImage = `url('/css/${backgrounds[getRandomIntInclusive(0,backgrounds.length-1)]}')`;
       advStory(current_scene);
-      document.body.style.backgroundImage = "url('/css/77-rge.jpg')";
-      document.body.style.color = "white";
     }
     if (storyBegin === false) {
       btn.forEach((item,index,array) => {
