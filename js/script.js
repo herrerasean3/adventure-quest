@@ -177,7 +177,7 @@ let ham = ['SCENE I. Elsinore. A platform before the castle.',
 'Let\'s do\'t, I pray; and I this morning know Where we shall find him most conveniently.',
 'Exeunt'];
 
-chars = ['FLAVIUS','MARULLUS','First Commoner','Second Commoner','FRANCISCO','BERNARDO'];
+chars = ['FLAVIUS','MARULLUS','First Commoner','Second Commoner','FRANCISCO','BERNARDO','HORATIO','MARCELLUS'];
 
 backgrounds = ['71.jpg','77-rge.jpg'];
 
