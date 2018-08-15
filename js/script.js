@@ -11,7 +11,7 @@ let current_scene;
 let process = 0;
 
 let jc = ['SCENE I. Rome. A Street.', 'Enter FLAVIUS, MARULLUS, and certain Commoners',
-'FLAVIUS','Hence! home, you idle creatures get you home; <br>Is this a holiday? what! know you not, <br>Being mechanical, you ought not walk <br>Upon a labouring day without the sign <br>Of your profession? Speak, what trade art thou?','First Commoner','Why, sir, a carpenter.','MARULLUS','Where is thy leather apron and thy rule? <br>What dost thou with thy best apparel on?<br> You, sir, what trade are you?','First Commoner', 'Why, sir, a carpenter.','MARULLUS','Where is thy leather apron and thy rule? <br>What dost thou with thy best apparel on? <br>You, sir, what trade are you?']
+'FLAVIUS','Hence! home, you idle creatures get you home; <br>Is this a holiday? what! know you not, <br>Being mechanical, you ought not walk <br>Upon a labouring day without the sign <br>Of your profession? Speak, what trade art thou?','First Commoner','Why, sir, a carpenter.','MARULLUS','Where is thy leather apron and thy rule? <br>What dost thou with thy best apparel on?<br> You, sir, what trade are you?','First Commoner', 'Why, sir, a carpenter.','MARULLUS','Where is thy leather apron and thy rule? <br>What dost thou with thy best apparel on? <br>You, sir, what trade are you?','Second Commoner','Truly, sir, in respect of a fine workman, I am but, <br>as you would say, a cobbler.']
 let ham = [];
 chars = ['FLAVIUS','MARULLUS','First Commoner','Second Commoner'];
 
@@ -29,9 +29,6 @@ function elePrint(target,content){
 function advStory(chapter){
   eleWipe(storybox);
   if (sceneEnd===false) {
-    if (postNum === chapter.length) {
-      sceneEnd = true;
-    }
     while (process < 2) {
       if (chapter[postNum-1].toLowerCase().includes("exeunt")) {
         elePrint(storybox, `<i>${chapter[postNum-1]}</i>`)
@@ -51,6 +48,47 @@ function advStory(chapter){
         postNum++;
       }
       process++;
+      if (postNum === chapter.length) {
+        sceneEnd = true;
+      }
+    }
+    process = 0;
+  }
+  else {
+
+  }
+}
+
+function backStory(chapter){
+  eleWipe(storybox);
+  if (sceneEnd===false) {
+    while (process < 2) {
+      if (process === 0) {
+        postNum--;
+      }
+      if (chapter[postNum-1].toLowerCase().includes("exeunt")) {
+        elePrint(storybox, `<i>${chapter[postNum-1]}</i>`)
+        postNum--;
+        break
+      }
+      else if (chapter[postNum-1].includes("SCENE")) {
+        elePrint(storybox, `<h3>${chapter[postNum-1]}</h3>`);
+        postNum--;
+      }
+      else if (chars.indexOf(chapter[postNum-1]) !== -1) {
+        elePrint(storybox, `<h3>${chapter[postNum-1]}</h3>`);
+        postNum--;
+      }
+      else {
+        elePrint(storybox, `<p>${chapter[postNum-1]}</p>`);
+        console.log(chapter[postNum-1])
+        postNum--;
+      }
+      process++;
+      if (postNum === chapter.length) {
+        sceneEnd = true;
+        break
+      }
     }
     process = 0;
   }
