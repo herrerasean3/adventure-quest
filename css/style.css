@@ -10,8 +10,8 @@ body {
 }
 
 #storybox{
-  width: 50%;
-  height: 50px;
+  width: 80%;
+  height: auto;
   border: 1px solid;
   margin: auto;
   flex: auto;
