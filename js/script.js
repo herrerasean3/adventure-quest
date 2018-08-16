@@ -193,7 +193,6 @@ function eleWipe(target){
 
 //Sets the contents of the target element to the string provided in content.
 function elePrint(target,content){
-  console.log(postNum)
   target.innerHTML+=content;
 }
 
