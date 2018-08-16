@@ -184,7 +184,7 @@ let ham = ['SCENE I. Elsinore. A platform before the castle.',
 
 chars = ['FLAVIUS','MARULLUS','First Commoner','Second Commoner','FRANCISCO','BERNARDO','HORATIO','MARCELLUS'];
 
-backgrounds = ['71.jpg','77-rge.jpg'];
+backgrounds = ['71.jpg','77-rge.jpg','17.webp','74.jpg'];
 
 //Clears any text or elements inside the target, allowing us to maintain a clean worspace
 function eleWipe(target){
