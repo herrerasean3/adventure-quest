@@ -234,6 +234,11 @@ function refreshStory(){
   window.location.replace(window.location.protocol + "//" + window.location.host);
 }
 
+function randomBackground(){
+  document.body.style.backgroundImage = `url('/css/${backgrounds[getRandomIntInclusive(0,backgrounds.length-1)]}')`;
+}
+
+
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -252,7 +257,7 @@ btn.forEach((item,index,array) => {
       refreshStory();
     }
     else if (item.textContent == 'Continue') {
-      document.body.style.backgroundImage = `url('/css/${backgrounds[getRandomIntInclusive(0,backgrounds.length-1)]}')`;
+      randomBackground();
       advStory(current_scene);
     }
     if (storyBegin === false) {
@@ -271,7 +276,7 @@ btn.forEach((item,index,array) => {
 })
 
 function docInit(){
-  elePrint(storybox, '<h2>Select a new Story:</h2>');
+  elePrint(storybox, '<h2>Select a Story:</h2>');
   storyBegin = false;
   btn1.textContent = 'Julius Caesar';
   btn2.textContent = 'Hamlet';
