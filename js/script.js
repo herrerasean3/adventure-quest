@@ -226,45 +226,12 @@ function advStory(chapter){
     process = 0;
   }
   else {
-    window.location.replace(window.location.protocol + "//" + window.location.host);
-    docInit();
+    refreshStory();
   }
 }
 
-function backStory(chapter){
-  // eleWipe(storybox);
-  // if (sceneEnd===false) {
-  //   while (process < 2) {
-  //     if (process === 0) {
-  //       postNum--;
-  //     }
-  //     if (chapter[postNum-1].toLowerCase().includes("exeunt")) {
-  //       elePrint(storybox, `<i>${chapter[postNum-1]}</i>`)
-  //       postNum--;
-  //       break
-  //     }
-  //     else if (chapter[postNum-1].includes("SCENE")) {
-  //       elePrint(storybox, `<h3>${chapter[postNum-1]}</h3>`);
-  //       postNum--;
-  //     }
-  //     else if (chars.indexOf(chapter[postNum-1]) !== -1) {
-  //       elePrint(storybox, `<h3>${chapter[postNum-1]}</h3>`);
-  //       postNum--;
-  //     }
-  //     else {
-  //       elePrint(storybox, `<p>${chapter[postNum-1]}</p>`);
-  //       console.log(chapter[postNum-1])
-  //       postNum--;
-  //     }
-  //     process++;
-  //     if (postNum === chapter.length) {
-  //     }
-  //   }
-  //   process = 0;
-  // }
-  // else {
-  //
-  // }
+function refreshStory(){
+  window.location.replace(window.location.protocol + "//" + window.location.host);
 }
 
 function getRandomIntInclusive(min, max) {
@@ -281,8 +248,8 @@ btn.forEach((item,index,array) => {
     else if (item.textContent == 'Hamlet') {
       current_scene = ham;
     }
-    else if (item.textContent == 'Back') {
-      backStory(current_scene);
+    else if (item.textContent == 'Return') {
+      refreshStory();
     }
     else if (item.textContent == 'Continue') {
       document.body.style.backgroundImage = `url('/css/${backgrounds[getRandomIntInclusive(0,backgrounds.length-1)]}')`;
@@ -291,7 +258,7 @@ btn.forEach((item,index,array) => {
     if (storyBegin === false) {
       btn.forEach((item,index,array) => {
         if (index === 0) {
-          item.textContent = 'Back';
+          item.textContent = 'Return';
         }
         else if (index === 1) {
           item.textContent = 'Continue';
